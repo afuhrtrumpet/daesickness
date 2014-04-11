@@ -108,8 +108,8 @@ ROOT_URLCONF = 'codefest.urls'
 WSGI_APPLICATION = 'codefest.wsgi.application'
 
 TEMPLATE_DIRS = (
-    '/home/kacper/workspace/codefest/templates/',
-    #add your working directories here!
+    '/home/kacper/workspace/codefest/templates/', #kacper
+    '/home/action/codefest/codefest/templates/', #nitrous.io
 )
 
 INSTALLED_APPS = (
