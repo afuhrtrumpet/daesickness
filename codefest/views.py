@@ -7,5 +7,7 @@ def home(request):
     return HttpResponse(t.render(c))
 
 def search(request):
+	t = loader.get_template('results.html')
 	term = request.POST.get('term')
-	return HttpRedirectResponse(term)
+	c = RequestContext(request, {'term': term})
+	return HttpResponse(t.render(c))
