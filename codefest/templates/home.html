@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h1>Hello, World!</h1>
+	<h1>Hello, World!></h1>
+	<form action = "{% url 'search'}" method="post">
+		{% csrf_token %}
+		<input type="text" name="term"  id="term" value="Common cold"/><br>
+		<input type="submit" value="Submit Search"/>
+	</form>
 </body>
 </html>
