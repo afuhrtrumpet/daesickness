@@ -13,7 +13,6 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': '/home/kacper/workspace/codefest/sqlite.db',                      # Or path to database file if using sqlite3.
-	'/home/alex/codefest/sqlite.db',
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -111,6 +110,7 @@ WSGI_APPLICATION = 'codefest.wsgi.application'
 TEMPLATE_DIRS = (
     '/home/kacper/workspace/codefest/templates/', #kacper
     '/home/action/codefest/codefest/templates/', #nitrous.io
+    '/home/alex/codefest/codefest/templates/', #alex
 )
 
 INSTALLED_APPS = (
