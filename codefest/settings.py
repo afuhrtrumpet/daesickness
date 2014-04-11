@@ -108,9 +108,8 @@ ROOT_URLCONF = 'codefest.urls'
 WSGI_APPLICATION = 'codefest.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    '/home/kacper/workspace/codefest/templates/',
+    #add your working directories here!
 )
 
 INSTALLED_APPS = (
