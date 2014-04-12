@@ -6,7 +6,7 @@ def parse(query):
 	url = "http://healthfinder.gov/developers/Search.xml"
 	params = {'api_key':keys.HEALTHFINDER, 'keyword':query}
 	api_response = requests.get(url, params=params)
-	root = ET.fromstring(api_response.text)
+	root = ET.fromstring(api_response.text.encode('utf-8'))
 	results = []
 	for topic in root.find('Topics').findall('Topic'):
 		result = {}
