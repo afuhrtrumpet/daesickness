@@ -9,3 +9,7 @@
 .top-padding {
 	margin-top: 30px;
 }
+
+a:link,a:visited,a:hover,a:active {
+	text-decoration: none !important;
+}
