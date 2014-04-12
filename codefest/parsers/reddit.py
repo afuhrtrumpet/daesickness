@@ -1,9 +1,7 @@
-import requests
-import json
 import praw
 
 def parse(query):
-	user_agent=("Medical reddit searcher"
+	user_agent = ("Medical reddit searcher"
 			"github.com/afuhrtrumpet/codefest")
 	r = praw.Reddit(user_agent=user_agent)
 	results = []
@@ -12,5 +10,5 @@ def parse(query):
 		result_item["title"] = submission.title
 		result_item["url"] = submission.short_link
 		results.append(result_item)
-	reddit_item = {'site_url': 'reddit.com', 'icon_url': '', sources: results}
+	reddit_item = {'title':'Reddit', 'site_url': 'http://www.reddit.com', 'icon_url': '', 'results': results}
 	return reddit_item

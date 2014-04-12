@@ -1,5 +1,5 @@
 from django.template import loader, RequestContext
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
 import parsers.reddit as Reddit
 
 def home(request):
@@ -8,8 +8,9 @@ def home(request):
     return HttpResponse(t.render(c))
 
 def search(request):
-	t = loader.get_template('results.html')
-	term = request.POST.get('term')
-	redditResults = Reddit.parse(term)
-	c = RequestContext(request, {'reddit': redditResults})
-	return HttpResponse(t.render(c))
+    t = loader.get_template('results.html')
+    term = request.POST.get('term')
+    reddit = Reddit.parse(term)
+    sources = [reddit,reddit]
+    c = RequestContext(request, {'sources': sources})
+    return HttpResponse(t.render(c))
