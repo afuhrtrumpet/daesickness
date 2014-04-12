@@ -1,3 +1,4 @@
 *~
 *.pyc
-/codefest/settings/py
+codefest/settings/py
+kp*
