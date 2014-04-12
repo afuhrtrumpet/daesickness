@@ -4,6 +4,7 @@ import parsers.reddit as Reddit
 import parsers.healthfinder as HF
 import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
+from bullentin_board import models
 
 def home(request):
     t = loader.get_template('home.html')
@@ -32,3 +33,9 @@ def submit_feedback(request):
 	t = loader.get_template('home.html')
 	term = request.POST.get('term')
 	message = request.POST.get('message')
+	if (BulletinBoard.objects.filter(condition=term).length==0):
+		board = models.BulletinBoard(condition=term)
+		board.save()
+	board.message_set.add(models.Message(message=message))
+	c = RequestContext(request, {})
+	return HttpResponse(t.render(c))
