@@ -1,7 +1,7 @@
 *~
 *.pyc
-codefest/settings.py
 kp*
 *.ropeproject*
 codefest/keys.py
 *.swp
+codefest/mypath.py
