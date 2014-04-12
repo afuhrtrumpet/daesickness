@@ -20,6 +20,7 @@ urlpatterns = patterns('',
     url(r'^search/', 'codefest.views.search', name='search'),
     url(r'^submit_feedback/', 'codefest.views.submit_feedback', name='submit_feedback'),
     url(r'^add_sponsor/', 'codefest.views.add_sponsor', name='add_sponsor'),
+    url(r'^get_sponsor/', 'codefest.views.get_sponsor', name='get_sponsor'),
 )
 
 

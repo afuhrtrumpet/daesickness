@@ -6,6 +6,9 @@ import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
 from bulletin_board.models import BulletinBoard, Message
 from buddy.models import Buddy
+import random
+from random import choice
+from math import *
 
 def home(request, returning=False):
 	t = loader.get_template('home.html')
@@ -24,11 +27,13 @@ def search(request):
 	if len(BulletinBoard.objects.filter(condition=term)) != 0:
 		feedback = BulletinBoard.objects.filter(condition=term)[0].message_set.all()
 	no_results = 0 == sum([len(source['results']) for source in sources])
+	buddies_available = len(Buddy.objects.filter(search_term=term)) > 0
 	c = RequestContext(request, {'purpose':'search_results',
 								 'sources': sources,
 								 'no_results':no_results,
 								'feedback': feedback,
 								'term': term,
+								'buddies': buddies_available,
 								 }
 					   )
 	return HttpResponse(t.render(c))
@@ -54,4 +59,17 @@ def add_sponsor(request):
 	buddy = Buddy(email=email, search_term=term, first_name=first_name)
 	buddy.save()
 	c = RequestContext(request, {'purpose':'successful_buddy'})
+	return HttpResponse(t.render(c))
+
+def get_sponsor(request):
+	t = loader.get_template('sponsor.html')
+	term=request.POST.get('term').lower()
+	first_name = request.POST.get('first_name')
+	email = request.POST.get('email')
+
+	buddies = Buddy.objects.filter(search_term=term)
+	random_index = floor((random.random() * len(buddies)))
+	buddy = choice(Buddy.objects.all())  #buddies[random_index]
+	c = RequestContext(request, {'name': buddy.first_name, 'email': buddy.email})
+	buddy.delete()
 	return HttpResponse(t.render(c))
