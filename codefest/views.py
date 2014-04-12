@@ -20,6 +20,8 @@ def search(request):
 	t = loader.get_template('results.html')
 	term = request.POST.get('term').lower()
 	corrected = Autocorrect.correct(term)
+	if (corrected):
+		term=corrected
 	reddit = Reddit.parse(term)
 	healthfinder = HF.parse(term)
 	kaiserhealthnews = KHN.parse(term)

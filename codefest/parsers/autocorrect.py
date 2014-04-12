@@ -6,4 +6,4 @@ def correct(query):
 	params = {'db':'pmc', 'term':query}
 	api_spelling_response = requests.get(search_url, params=params)
 	root = ET.fromstring(api_spelling_response.text.encode('UTF-8'))
-	return root.find('CorrectedQuery')
+	return root.find('CorrectedQuery').text
