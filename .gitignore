@@ -2,3 +2,4 @@
 *.pyc
 codefest/settings/py
 kp*
+*.ropeproject*
