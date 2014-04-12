@@ -17,7 +17,7 @@ def search(request):
     healthfinder = HF.parse(term)
     kaiserhealthnews = KHN.parse(term)
     medline = ML.parse(term)
-    sources = [reddit, healthfinder, kaiserhealthnews, medline]
+    sources = [healthfinder, kaiserhealthnews, medline, reddit]
     no_results = 0 == sum([len(source['results']) for source in sources])
     c = RequestContext(request, {'sources': sources,
                                  'no_results':no_results,
