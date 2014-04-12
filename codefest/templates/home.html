@@ -29,11 +29,11 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
+			<div class="col-sm-8 col-sm-offset-2">
 				<form class="form-search" action="{% url 'search' %}" method="post">
 					{% csrf_token %}
 					<div class="input-group">
-						<input type="text" name="term" id="term" class="form-control"><span
+						<input type="text" name="term" id="term" class="form-control" placeholder="please enter a search term"><span
 							class="input-group-btn">
 							<button class="btn btn-default" type="submit">Search</button>
 						</span>

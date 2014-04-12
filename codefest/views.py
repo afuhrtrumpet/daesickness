@@ -11,6 +11,6 @@ def search(request):
     t = loader.get_template('results.html')
     term = request.POST.get('term')
     reddit = Reddit.parse(term)
-    sources = [reddit]
+    sources = [reddit,reddit]
     c = RequestContext(request, {'sources': sources})
     return HttpResponse(t.render(c))

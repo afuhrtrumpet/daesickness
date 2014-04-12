@@ -1,6 +1,10 @@
 {% extends "home.html" %} {% block results %}
-<ul>{% for source in sources %} {% for result in source.results %}
-	<li><a href="{{ result.url }}">{{ source.title }}</a></li> {% endfor %} {% endfor %}
-</ul>
-
+	<div class="row">{% for source in sources %}
+		<div class="col-sm-10 col-sm-offset-1">
+		<div class="page-header"><h3><a href="{{ source.site_url }}">{{ source.title }}</a></h3></div>
+			<div class="list-group"> {% for result in source.results %}{% if not forloop.counter0 > 4 %}
+				<a class="list-group-item" href="{{ result.url }}">{{ result.title }}<span class="badge">{{ forloop.counter }}</span></a> {% endif %}{% endfor %}
+			</div>
+		</div>{% endfor %}
+	</div>
 {% endblock %}
