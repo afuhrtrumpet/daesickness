@@ -1,5 +1,3 @@
-import requests
-import json
 import praw
 
 def parse(query):
