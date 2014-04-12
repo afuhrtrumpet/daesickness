@@ -70,6 +70,15 @@
 				</div>
 				<div id="collapseThree" class="panel-collapse collapse">
 					<div>
+						<form class="sponsor_form" action="{% url 'add_sponsor' %}" method="post">
+							{% csrf_token %}
+							<div class="panel-body">
+								<input type="hidden" name="term" id="term" value="{{term}}"/>
+								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Your first name"/>
+								<input type="text" name="email" id="email" class="form-control" placeholder="Your email address"/>
+								<button class = "btn btn-default" type="submit">Sign up to sponsor</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
