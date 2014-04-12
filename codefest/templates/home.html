@@ -29,7 +29,14 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-8 col-sm-offset-2">
+			<div class="col-sm-8 col-sm-offset-2">{% ifequal purpose "home" %}
+				<div class="home-padding"></div>{% endifequal %}{% ifequal purpose "successful_feedback" %}
+				<div class="alert alert-success alert-dismissable">
+					Your feedback has been successfully submitted.
+				</div>{% endifequal %}{% ifequal purpose "successful_buddy" %}
+				<div class="alert alert-success alert-dismissable">
+					You have been added to the sponsor system.  Thank you for agreeing to be a sponsor.
+				</div>{% endifequal %}
 				<form class="form-search" action="{% url 'search' %}" method="post">
 					{% csrf_token %}
 					<div class="input-group">

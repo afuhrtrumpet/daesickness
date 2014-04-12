@@ -10,6 +10,10 @@
 	margin-top: 30px;
 }
 
+.home-padding {
+	margin-top: 100px;
+}
+
 a:link,a:visited,a:hover,a:active {
 	text-decoration: none !important;
 }
@@ -35,6 +39,7 @@ a:link,a:visited,a:hover,a:active {
 
 .btn-primary {
 	background-color: rgb(0, 180, 58) !important;
+	margin-top: 15px !important;
 }
 
 #mainnav {
