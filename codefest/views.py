@@ -5,6 +5,7 @@ import parsers.healthfinder as HF
 import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
 import parsers.pubmed as Pubmed
+import parsers.autocorrect as Autocorrect
 from bulletin_board.models import BulletinBoard, Message
 from buddy.models import Buddy
 import random
@@ -19,6 +20,7 @@ def home(request, returning=False):
 def search(request):
 	t = loader.get_template('results.html')
 	term = request.POST.get('term').lower()
+	corrected = Autocorrect.correct(term)
 	reddit = Reddit.parse(term)
 	healthfinder = HF.parse(term)
 	kaiserhealthnews = KHN.parse(term)
@@ -36,6 +38,7 @@ def search(request):
 								'feedback': feedback,
 								'term': term,
 								'buddies': buddies_available,
+								'corrected': corrected,
 								 }
 					   )
 	return HttpResponse(t.render(c))

@@ -1,5 +1,8 @@
 {% extends "home.html" %} {% block results %}
 <div class="top-padding"></div>
+{% if corrected %}
+{{corrected}}
+{% endif %}
 <div class="row">
 	{% if not no_results %}{% for source in sources %}{% if source.results %}
 	<div class="col-sm-8 col-sm-offset-2">
