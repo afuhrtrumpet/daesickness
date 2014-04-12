@@ -57,7 +57,7 @@
 							<div class="panel-body">{{ note.message }}</div>
 						</div>{% endfor %}
 					</div>{% else %}
-					<div>No one has left feedback... Be the first!</div>{% endif %}
+					<div class="container"><p>No one has left feedback... Be the first!</p></div>{% endif %}
 				</div>
 			</div>
 			<div class="panel panel-default">
@@ -73,10 +73,16 @@
 						<form class="sponsor_form" action="{% url 'add_sponsor' %}" method="post">
 							{% csrf_token %}
 							<div class="panel-body">
-								<input type="hidden" name="term" id="term" value="{{term}}"/>
-								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Your first name"/>
-								<input type="text" name="email" id="email" class="form-control" placeholder="Your email address"/>
-								<button class = "btn btn-default" type="submit">Sign up to sponsor</button>
+								<input type="hidden" name="term" id="term" value="{{ term }}"/>
+								<div class="input-group">
+									<span class="input-group-addon">Name</span>
+									<input type="text" name="first_name" id="first_name" class="form-control" />
+								</div>
+								<div class="input-group">
+									<span class="input-group-addon">@</span>
+									<input type="text" name="email" id="email" class="form-control" />
+								</div>
+								<button class="btn btn-primary" type="submit">Sign up to sponsor</button>
 							</div>
 						</form>
 					</div>

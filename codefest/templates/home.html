@@ -36,6 +36,9 @@
 				</div>{% endifequal %}{% ifequal purpose "successful_buddy" %}
 				<div class="alert alert-success alert-dismissable">
 					You have been added to the sponsor system.  Thank you for agreeing to be a sponsor.
+				</div>{% endifequal %}{% ifequal purpose "successful_contact" %}
+				<div class="alert alert-success alert-dismissable">
+					A sponsor has been notified of your contact request.
 				</div>{% endifequal %}
 				<form class="form-search" action="{% url 'search' %}" method="post">
 					{% csrf_token %}

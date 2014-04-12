@@ -25,7 +25,7 @@ def search(request):
 		feedback = BulletinBoard.objects.filter(condition=term)[0].message_set.all()
 	no_results = 0 == sum([len(source['results']) for source in sources])
 	c = RequestContext(request, {'purpose':'search_results',
-                                 'sources': sources,
+								 'sources': sources,
 								 'no_results':no_results,
 								'feedback': feedback,
 								'term': term,
@@ -53,5 +53,5 @@ def add_sponsor(request):
 	email = request.POST.get('email')
 	buddy = Buddy(email=email, search_term=term, first_name=first_name)
 	buddy.save()
-	c = RequestContext(request, {})
+	c = RequestContext(request, {'purpose':'successful_buddy'})
 	return HttpResponse(t.render(c))

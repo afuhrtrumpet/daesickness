@@ -158,3 +158,6 @@ LOGGING = {
         },
     }
 }
+
+EMAIL_HOST = ''
+EMAIL_PORT = ''

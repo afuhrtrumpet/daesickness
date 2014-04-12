@@ -1,5 +1,22 @@
+p {
+	margin-top: 5px !important;
+	margin-bottom: 5px !important;
+}
+
+body {
+	background-image: url(../img/congruent_pentagon.png);
+}
+
+h3>a {
+	color: #508563;
+}
+
 .search {
 	text-align: center;
+}
+
+.input-group {
+	margin-top: 5px !important;
 }
 
 .site-icon {
@@ -12,6 +29,10 @@
 
 .home-padding {
 	margin-top: 100px;
+}
+
+.page-header {
+	border-bottom: none !important;
 }
 
 a:link,a:visited,a:hover,a:active {
@@ -42,6 +63,11 @@ a:link,a:visited,a:hover,a:active {
 	margin-top: 15px !important;
 }
 
+.badge {
+	background: rgb(150, 233, 150) !important;
+}
+
 #mainnav {
 	background-color: rgb(150, 233, 150);
+	opacity: .5;
 }
