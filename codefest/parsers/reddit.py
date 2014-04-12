@@ -6,8 +6,9 @@ def parse(query):
 	r = praw.Reddit(user_agent=user_agent)
 	results = []
 	for submission in r.search(query=query, subreddit='medical'):
-		resultItem = {}
-		resultItem["title"] = submission.title
-		resultItem["url"] = submission.short_link
-		results.append(resultItem)
-	return results
+		result_item = {}
+		result_item["title"] = submission.title
+		result_item["url"] = submission.short_link
+		results.append(result_item)
+	reddit_item = {'site_url': 'reddit.com', 'icon_url': '', sources: results}
+	return reddit_item
