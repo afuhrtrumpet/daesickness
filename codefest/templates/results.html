@@ -2,39 +2,17 @@
 <div class="top-padding"></div>
 <div class="row">
 	<div class="col-sm-8 col-sm-offset-2">
-	<div class="page-header"><h4>Showing results for "<em>{{ term }}</em>"</h4></div>
+	<div class="page-header"><h4>Connections found for "<em>{{ term }}</em>"</h4></div>
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4 class="panel-title">
 						<a data-toggle="collapse" data-parent="#accordion"
-							href="#collapseOne">Do you have this condition? Leave advice
-							here!</a>
+							href="#collapseOne">User Advice</a>
 					</h4>
 				</div>
 				<div id="collapseOne" class="panel-collapse collapse">
-					<form class="feedbackform" action="{% url 'submit_feedback' %}"
-						method="post">
-						{% csrf_token %}
-						<div class="panel-body">
-							<textarea class="form-control" name="message" id="message"
-								rows="3"></textarea>
-							<input type="hidden" name="term" id="term" value="{{term}}" />
-							<button type="submit" class="btn btn-primary">Submit</button>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordian"
-						href="#collapseTwo">See advice others have left behind for
-						this condition.</a>
-				</h4>
-			</div>
-			<div id="collapseTwo" class="panel-collapse collapse">
+
 				{% if feedback %}
 				<div class="panel-body">
 					{% for note in feedback %}
@@ -45,10 +23,22 @@
 					{% endfor %}
 				</div>
 				{% else %}
-				<div class="container">
+				<div class="panel-body">
 					<p>No one has left feedback... Be the first!</p>
 				</div>
 				{% endif %}
+					<form class="feedbackform" action="{% url 'submit_feedback' %}"
+						method="post">
+						{% csrf_token %}
+						<div class="panel-body">
+                            <p>Have this condition? Got helpful advice? Leave a comment below!</p>
+							<textarea class="form-control" name="message" id="message"
+								rows="3"></textarea>
+							<input type="hidden" name="term" id="term" value="{{term}}" />
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
 			</div>
 		</div>
 		<div class="panel panel-default">
@@ -85,7 +75,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordian"
-						href="#collapseFour">Contact a sponsor.</a>
+						href="#collapseFour">Contact a sponsor</a>
 				</h4>
 			</div>
 			<div id="collapseFour" class="panel-collapse collapse">
@@ -120,7 +110,7 @@
 			<div class="panel-heading">
 				<h4 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordian"
-						href="#collapseFive">Search results.</a>
+						href="#collapseFive">External Information</a>
 				</h4>
 			</div>
 			<div id="collapseFive" class="panel-collapse collapse">
