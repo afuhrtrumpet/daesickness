@@ -1,7 +1,10 @@
 {% extends "home.html" %}
 
 {% block results %}
-
-<p>{{term}}</p>
+<ul>
+{% for item in reddit %}
+<li><a href="{{item.url}}">{{item.title}}</a></li>
+{% endfor %}
+</ul>
 
 {% endblock %}
