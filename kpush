@@ -1,0 +1,2 @@
+git checkout  afuhrtrumpet-master master
+git pull https://github.com/afuhrtrumpet/codefest.git master
