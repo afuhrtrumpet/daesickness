@@ -1,74 +1,93 @@
 p {
-	margin-top: 5px !important;
-	margin-bottom: 5px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
 }
 
 body {
-	background-image: url(../img/congruent_pentagon.png);
+    background-image: url(../img/congruent_pentagon.png);
 }
 
 h3>a {
-	color: #508563;
+    color: #508563;
 }
 
 .search {
-	text-align: center;
+    text-align: center;
 }
 
 .input-group {
-	margin-top: 5px !important;
+    margin-top: 5px !important;
 }
 
 .site-icon {
-	max-height: 20px;
+    max-height: 20px;
 }
 
 .top-padding {
-	margin-top: 30px;
+    margin-top: 30px;
 }
 
 .home-padding {
-	margin-top: 100px;
+    margin-top: 100px;
 }
 
 .page-header {
-	border-bottom: none !important;
-	margin-bottom: 0px !important;
+    border-bottom: none !important;
+    margin-bottom: 0px !important;
 }
 
 a:link,a:visited,a:hover,a:active {
-	text-decoration: none !important;
+    text-decoration: none !important;
 }
 
 .navbar-header {
-	float: left !important;
-	padding: 40px !important;
-	text-align: center !important;
-	width: 100% !important;
+    float: left !important;
+    padding: 40px !important;
+    text-align: center !important;
+    width: 100% !important;
 }
 
-.navbar-brand {
-	float: none !important;
-	font-size: xx-large !important;
-	font-weight: bold !important;
-	color: rgb(0, 180, 58) !important;
+body .navbar-default .navbar-brand {
+    float: none;
+    font-size: xx-large;
+    font-weight: bold;
+    color: rgb(0, 43, 10);
+}
+
+a.navbar-brand :hover {
+    color: rgb(0, 191, 70) !important;
+}
+
+.fa.fa-heart {
+    color: rgb(255, 0, 0);
+    margin-right: 0.5em;
 }
 
 .btn-default {
-	background-color: rgb(150, 233, 150) !important;
-	color: rgb(0, 180, 58) !important;
+    background-color: rgb(150, 233, 150) !important;
+    color: rgb(0, 180, 58) !important;
 }
 
 .btn-primary {
-	background-color: rgb(0, 180, 58) !important;
-	margin-top: 15px !important;
+    background-color: rgb(0, 180, 58) !important;
+    margin-top: 15px !important;
 }
 
 .badge {
-	background: rgb(150, 233, 150) !important;
+    background: rgb(150, 233, 150) !important;
 }
 
 #mainnav {
-	background-color: rgb(150, 233, 150);
-	opacity: .5;
+    background-color: rgb(150, 233, 150);
+    opacity: .6;
+}
+
+div.jumbotron {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+body div.container {
+    padding-bottom: 3em;
+    height: 100%;
 }
