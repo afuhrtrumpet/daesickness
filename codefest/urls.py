@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # url(r'^admin/', include(admin.site.urls)),
     
     url(r'^$', 'codefest.views.home',name='home'),
-    url(r'^search/$', 'codefest.views.search', name='search'),
+    url(r'^search/', 'codefest.views.search', name='search'),
 )
 
 
