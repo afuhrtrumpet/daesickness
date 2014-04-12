@@ -13,3 +13,30 @@
 a:link,a:visited,a:hover,a:active {
 	text-decoration: none !important;
 }
+
+.navbar-header {
+	float: left !important;
+	padding: 40px !important;
+	text-align: center !important;
+	width: 100% !important;
+}
+
+.navbar-brand {
+	float: none !important;
+	font-size: xx-large !important;
+	font-weight: bold !important;
+	color: rgb(0, 180, 58) !important;
+}
+
+.btn-default {
+	background-color: rgb(150, 233, 150) !important;
+	color: rgb(0, 180, 58) !important;
+}
+
+.btn-primary {
+	background-color: rgb(0, 180, 58) !important;
+}
+
+#mainnav {
+	background-color: rgb(150, 233, 150);
+}
