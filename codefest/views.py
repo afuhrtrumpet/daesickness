@@ -22,9 +22,8 @@ def search(request):
     no_results = 0 == sum([len(source['results']) for source in sources])
     c = RequestContext(request, {'sources': sources,
                                  'no_results':no_results,
-				 'feedback': [{'message': 'I feel ya',
-					 'date': 'today'}],
-				 'term': term,
+                                'feedback': [{'message': 'I feel ya','date': 'today'}],
+                                'term': term,
                                  }
                        )
     return HttpResponse(t.render(c))
