@@ -1,4 +1,4 @@
-mport mypath
+import mypath
 
 # Django settings for codefest project.
 

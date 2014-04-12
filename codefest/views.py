@@ -22,8 +22,8 @@ def search(request):
     c = RequestContext(request, {'sources': sources,
                                  'no_results':no_results,
 				 'feedback': [{'message': 'I feel ya',
-					 'date': 'today'}]
-				 'term': term
+					 'date': 'today'}],
+				 'term': term,
                                  }
                        )
     return HttpResponse(t.render(c))
@@ -32,4 +32,3 @@ def submit_feedback(request):
 	t = loader.get_template('home.html')
 	term = request.POST.get('term')
 	message = request.POST.get('message')
-	if (BulletinBoard.objects.filter
