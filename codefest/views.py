@@ -13,6 +13,10 @@ def search(request):
     term = request.POST.get('term')
     reddit = Reddit.parse(term)
     healthfinder = HF.parse(term)
-    sources = [reddit,healthfinder]
-    c = RequestContext(request, {'sources': sources})
+    sources = [reddit, healthfinder]
+    no_results = 0 == sum([len(source['results']) for source in sources])
+    c = RequestContext(request, {'sources': sources,
+                                 'no_results':no_results,
+                                 }
+                       )
     return HttpResponse(t.render(c))
