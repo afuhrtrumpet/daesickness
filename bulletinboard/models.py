@@ -9,6 +9,7 @@ class BulletinBoard(models.Model):
 class Message(models.Model):
 	container = models.ForeignKey(BulletinBoard)
 	message = models.CharField(max_length=200)
+	pub_date = models.Date('date added')
 
 	def __unicode__(self):
 		return self.message
