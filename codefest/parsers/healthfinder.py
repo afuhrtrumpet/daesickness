@@ -13,5 +13,5 @@ def parse(query):
 		result['title'] = topic.find('Title').text
 		result['url'] = topic.find('AccessibleVersion').text
 		results.append(result)
-	healthfinder_item = {'title': 'Healthfinder', 'site_url': 'healthfinder.gov', 'icon_url': '/media/img/hf-apple.png', 'results': results}
+	healthfinder_item = {'title': 'Healthfinder', 'site_url': 'http://www.healthfinder.gov', 'icon_url': '/media/img/hf-apple.png', 'results': results}
 	return healthfinder_item
