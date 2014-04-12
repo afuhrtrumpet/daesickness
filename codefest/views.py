@@ -4,6 +4,7 @@ import parsers.reddit as Reddit
 import parsers.healthfinder as HF
 import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
+import parsers.pubmed as Pubmed
 from bulletin_board.models import BulletinBoard, Message
 from buddy.models import Buddy
 import random
@@ -22,7 +23,8 @@ def search(request):
 	healthfinder = HF.parse(term)
 	kaiserhealthnews = KHN.parse(term)
 	medline = ML.parse(term)
-	sources = [healthfinder, kaiserhealthnews, medline, reddit]
+	pubmed = Pubmed.parse(term)
+	sources = [healthfinder, kaiserhealthnews, medline, reddit, pubmed]
 	feedback = []
 	if len(BulletinBoard.objects.filter(condition=term)) != 0:
 		feedback = BulletinBoard.objects.filter(condition=term)[0].message_set.all()
