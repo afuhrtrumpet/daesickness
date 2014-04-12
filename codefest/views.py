@@ -6,7 +6,7 @@ import parsers.kaiserhealthnews as KHN
 
 def home(request):
     t = loader.get_template('home.html')
-    c = RequestContext(request, {})
+    c = RequestContext(request, {'sites': sites})
     return HttpResponse(t.render(c))
 
 def search(request):
