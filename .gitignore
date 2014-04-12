@@ -3,3 +3,4 @@
 codefest/settings.py
 kp*
 *.ropeproject*
+codefest/keys.py

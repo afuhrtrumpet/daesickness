@@ -5,7 +5,7 @@ def parse(query):
 			"github.com/afuhrtrumpet/codefest")
 	r = praw.Reddit(user_agent=user_agent)
 	results = []
-	for submission in r.search(query=query, subreddit='medical'):
+	for submission in r.search(query=query, subreddit='medical+AskADoctor'):
 		result_item = {}
 		result_item["title"] = submission.title
 		result_item["url"] = submission.short_link

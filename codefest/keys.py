@@ -1,1 +1,0 @@
-HEALTHFINDER="tcgdzbxqpcdlhovw"
