@@ -4,7 +4,7 @@ import parsers.reddit as Reddit
 import parsers.healthfinder as HF
 import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
-from bullentin_board import models
+from bulletin_board import models
 
 def home(request):
     t = loader.get_template('home.html')
@@ -19,10 +19,13 @@ def search(request):
     kaiserhealthnews = KHN.parse(term)
     medline = ML.parse(term)
     sources = [healthfinder, kaiserhealthnews, medline, reddit]
+    feedback = []
+    if len(models.BulletinBoard.objects.filter(condition=term))!=0:
+	    feedback = models.BulletinBoard.objects.filter(condition=term)[0].message_set.all()
     no_results = 0 == sum([len(source['results']) for source in sources])
     c = RequestContext(request, {'sources': sources,
                                  'no_results':no_results,
-                                'feedback': [{'message': 'I feel ya','date': 'today'}],
+                                'feedback': feedback,
                                 'term': term,
                                  }
                        )
@@ -32,9 +35,11 @@ def submit_feedback(request):
 	t = loader.get_template('home.html')
 	term = request.POST.get('term')
 	message = request.POST.get('message')
-	if (BulletinBoard.objects.filter(condition=term).length==0):
+	if len(models.BulletinBoard.objects.filter(condition=term))==0:
 		board = models.BulletinBoard(condition=term)
 		board.save()
+	else:
+		board = models.BulletinBoard.objects.filter(condition=term)[0]
 	board.message_set.add(models.Message(message=message))
 	c = RequestContext(request, {})
 	return HttpResponse(t.render(c))

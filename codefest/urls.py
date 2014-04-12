@@ -18,6 +18,7 @@ urlpatterns = patterns('',
     
     url(r'^$', 'codefest.views.home',name='home'),
     url(r'^search/', 'codefest.views.search', name='search'),
+    url(r'^submit_feedback/', 'codefest.views.submit_feedback', name='submit_feedback'),
 )
 
 
