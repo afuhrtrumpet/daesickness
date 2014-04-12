@@ -13,7 +13,7 @@ def home(request):
 
 def search(request):
     t = loader.get_template('results.html')
-    term = request.POST.get('term')
+    term = request.POST.get('term').lower()
     reddit = Reddit.parse(term)
     healthfinder = HF.parse(term)
     kaiserhealthnews = KHN.parse(term)
@@ -33,7 +33,7 @@ def search(request):
 
 def submit_feedback(request):
 	t = loader.get_template('home.html')
-	term = request.POST.get('term')
+	term = request.POST.get('term').lower()
 	message = request.POST.get('message')
 	if len(models.BulletinBoard.objects.filter(condition=term))==0:
 		board = models.BulletinBoard(condition=term)
