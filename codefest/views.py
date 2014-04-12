@@ -21,14 +21,13 @@ def search(request):
     no_results = 0 == sum([len(source['results']) for source in sources])
     c = RequestContext(request, {'sources': sources,
                                  'no_results':no_results,
-				 'feedback': [{'message': 'I feel ya',
-					 'date': 'today'}],
-				 'term': term,
+                                'feedback': [{'message': 'I feel ya','date': 'today'}],
+                                'term': term,
                                  }
                        )
     return HttpResponse(t.render(c))
 
 def submit_feedback(request):
-	t = loader.get_template('home.html')
-	term = request.POST.get('term')
-	message = request.POST.get('message')
+    t = loader.get_template('home.html')
+    term = request.POST.get('term')
+    message = request.POST.get('message')
