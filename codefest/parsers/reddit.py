@@ -10,5 +10,5 @@ def parse(query):
 		result_item["title"] = submission.title
 		result_item["url"] = submission.short_link
 		results.append(result_item)
-	reddit_item = {'title':'Reddit', 'site_url': 'http://www.reddit.com', 'icon_url': '', 'results': results}
+	reddit_item = {'title':'Reddit', 'site_url': 'http://www.reddit.com', 'icon_url': '/media/img/reddit-alien.png', 'results': results}
 	return reddit_item
