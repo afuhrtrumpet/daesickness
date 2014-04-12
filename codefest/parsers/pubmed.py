@@ -22,5 +22,5 @@ def parse(query):
 			if item.attrib["Name"] == "Title":
 				result['title'] = item.text
 				results.append(result)
-	pubmed_item = {'title': 'Pubmed', 'site_url': 'http://www.ncbi.nlm.nih.gov/pubmed/', 'icon_url': '/media/img/khn.gif', 'results': results}
+	pubmed_item = {'title': 'Pubmed', 'site_url': 'http://www.ncbi.nlm.nih.gov/pubmed/', 'icon_url': '/media/img/pubmed.png', 'results': results}
 	return pubmed_item 
