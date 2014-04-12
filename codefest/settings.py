@@ -159,5 +159,8 @@ LOGGING = {
     }
 }
 
-EMAIL_HOST = ''
-EMAIL_PORT = ''
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'daesickness@gmail.com'
+EMAIL_HOST_PASSWORD = 'Cardinal 123 Health'
+EMAIL_PORT = 587

@@ -4,25 +4,6 @@
 {{corrected}}
 {% endif %}
 <div class="row">
-	{% if not no_results %}{% for source in sources %}{% if source.results %}
-	<div class="col-sm-8 col-sm-offset-2">
-		<div class="page-header">
-			<h3>
-				<a href="{{ source.site_url }}">{{ source.title }}<span
-						class="badge pull-right"><img class="site-icon"
-						src="{{ source.icon_url }}"></span></a>
-			</h3>
-		</div>
-		<div class="list-group">
-			{% for result in source.results %}{% if not forloop.counter0 > 4 %} <a
-				class="list-group-item" href="{{ result.url }}">{{ result.title }}</a>{% endif %}{% endfor %}
-		</div>
-	</div>
-	{% endif %}{% endfor %}{% else %}
-	<div class="col-sm-8 col-sm-offset-2">
-		<div class="alert alert-warning">No results found.</div>
-	</div>
-	{% endif %}
 	<div class="col-sm-8 col-sm-offset-2">
 		<div class="panel-group" id="accordion">
 			<div class="panel panel-default">
@@ -34,88 +15,135 @@
 					</h4>
 				</div>
 				<div id="collapseOne" class="panel-collapse collapse">
-					<form class="feedbackform" action="{% url 'submit_feedback' %}" method="post">
+					<form class="feedbackform" action="{% url 'submit_feedback' %}"
+						method="post">
 						{% csrf_token %}
 						<div class="panel-body">
-							<textarea class="form-control" name="message" id="message" rows="3"></textarea>
-								<input type="hidden" name="term" id="term" value="{{term}}"/>
-								<button type="submit" class="btn btn-primary">Submit</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordian"
-							href="#collapseTwo">See advice others have left behind for
-							this condition.</a>
-					</h4>
-				</div>
-				<div id="collapseTwo" class="panel-collapse collapse">{% if feedback %}
-					<div class="panel-body">{% for note in feedback %}
-						<div class="panel panel-default">
-							<div class="panel-heading">{{ note.pub_date }}</div>
-							<div class="panel-body">{{ note.message }}</div>
-						</div>{% endfor %}
-					</div>{% else %}
-					<div class="container"><p>No one has left feedback... Be the first!</p></div>{% endif %}
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordian"
-							href="#collapseThree">Leave behind your contact information
-							(be a sponsor!).</a>
-					</h4>
-				</div>
-				<div id="collapseThree" class="panel-collapse collapse">
-					<div>
-						<form class="sponsor_form" action="{% url 'add_sponsor' %}" method="post">
-							{% csrf_token %}
-							<div class="panel-body">
-								<input type="hidden" name="term" id="term" value="{{ term }}"/>
-								<div class="input-group">
-									<span class="input-group-addon">Name</span>
-									<input type="text" name="first_name" id="first_name" class="form-control" />
-								</div>
-								<div class="input-group">
-									<span class="input-group-addon">@</span>
-									<input type="text" name="email" id="email" class="form-control" />
-								</div>
-								<button class="btn btn-primary" type="submit">Sign up to sponsor</button>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordian"
-							href="#collapseFour">Contact a sponsor.</a>
-					</h4>
-				</div>
-				<div id="collapseFour" class="panel-collapse collapse">
-					<div>
-						{% if buddies %}<form class="get_sponsor_form" action="{% url 'get_sponsor' %}" method="post">
-							{% csrf_token %}
-							<div class="panel-body">
-								<input type="hidden" name="term" id="term" value="{{term}}"/>
-								<input type="text" name="first_name" id="first_name" class="form-control" placeholder="Your first name"/>
-								<input type="text" name="email" id="email" class="form-control" placeholder="Your email address"/>
-								<button class="btn btn-default" type="submit">Get a sponsor</button>
-							</div>
-						</form>
-						{% else %}<p>Sorry, no sponsors of your condition have signed up.</p>
-						{% endif %}
-					</div>
+							<textarea class="form-control" name="message" id="message"
+								rows="3"></textarea>
+							<input type="hidden" name="term" id="term" value="{{term}}" />
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
-
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordian"
+						href="#collapseTwo">See advice others have left behind for
+						this condition.</a>
+				</h4>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse">
+				{% if feedback %}
+				<div class="panel-body">
+					{% for note in feedback %}
+					<div class="panel panel-default">
+						<div class="panel-heading">{{ note.pub_date }}</div>
+						<div class="panel-body">{{ note.message }}</div>
+					</div>
+					{% endfor %}
+				</div>
+				{% else %}
+				<div class="container">
+					<p>No one has left feedback... Be the first!</p>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordian"
+						href="#collapseThree">Leave behind your contact information
+						(be a sponsor!).</a>
+				</h4>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse">
+				<div>
+					<form class="sponsor_form" action="{% url 'add_sponsor' %}"
+						method="post">
+						{% csrf_token %}
+						<div class="panel-body">
+							<input type="hidden" name="term" id="term" value="{{ term }}" />
+							<div class="input-group">
+								<span class="input-group-addon">Name</span> <input type="text"
+									name="first_name" id="first_name" class="form-control" />
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input type="text"
+									name="email" id="email" class="form-control" />
+							</div>
+							<button class="btn btn-primary" type="submit">Sign up to
+								sponsor</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordian"
+						href="#collapseFour">Contact a sponsor.</a>
+				</h4>
+			</div>
+			<div id="collapseFour" class="panel-collapse collapse">
+				<div>
+					{% if buddies %}
+					<form class="get_sponsor_form" action="{% url 'get_sponsor' %}"
+						method="post">
+						{% csrf_token %}
+						<div class="panel-body">
+							<input type="hidden" name="term" id="term" value="{{ term }}" />
+							<div class="input-group">
+								<span class="input-group-addon">Name</span> <input type="text"
+									name="first_name" id="first_name" class="form-control" />
+							</div>
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input type="text"
+									name="email" id="email" class="form-control" />
+							</div>
+							<button class="btn btn-primary" type="submit">Contact
+								sponsor</button>
+						</div>
+					</form>
+					{% else %}
+					<div class="container">
+						<p>Sorry, no sponsors for your condition have signed up.</p>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordian"
+						href="#collapseFive">Search results.</a>
+				</h4>
+			</div>
+			<div id="collapseFive" class="panel-collapse collapse">
+				{% if not no_results %}{% for source in sources %}{% if source.results %}
+				<div class="panel-body">
+					<div class="page-header">
+						<h3>
+							<a href="{{ source.site_url }}">{{ source.title }}<span
+								class="badge pull-right"><img class="site-icon"
+									src="{{ source.icon_url }}"></span></a>
+						</h3>
+					</div>
+					<div class="list-group">
+						{% for result in source.results %}{% if not forloop.counter0 > 4 %} <a class="list-group-item" href="{{ result.url }}">{{ result.title }}</a>{% endif %}{% endfor %}
+					</div>
+				</div>
+				{% endif %}{% endfor %}{% else %}
+				<div class="alert alert-warning">No results found.</div>
+				{% endif %}
+			</div>
+		</div>
 	</div>
 </div>
 {% endblock %}
