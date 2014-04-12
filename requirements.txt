@@ -1,3 +1,4 @@
 # requirements
 django==1.5.1
 praw==2.1.14
+beautifulsoup4==4.3.2
