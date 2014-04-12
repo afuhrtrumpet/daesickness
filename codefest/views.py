@@ -6,9 +6,8 @@ import parsers.kaiserhealthnews as KHN
 import parsers.medline as ML
 from bulletin_board.models import BulletinBoard, Message
 from buddy.models import Buddy
-import random
+from contact import contact_sponsor
 from random import choice
-from math import *
 
 def home(request, returning=False):
 	t = loader.get_template('home.html')
@@ -62,14 +61,13 @@ def add_sponsor(request):
 	return HttpResponse(t.render(c))
 
 def get_sponsor(request):
-	t = loader.get_template('sponsor.html')
-	term=request.POST.get('term').lower()
+	t = loader.get_template('home.html')
+	term = request.POST.get('term').lower()
 	first_name = request.POST.get('first_name')
 	email = request.POST.get('email')
-
 	buddies = Buddy.objects.filter(search_term=term)
-	random_index = floor((random.random() * len(buddies)))
-	buddy = choice(Buddy.objects.all())  #buddies[random_index]
-	c = RequestContext(request, {'name': buddy.first_name, 'email': buddy.email})
+	buddy = choice(buddies.all())  # buddies[random_index]
+	contact_sponsor(term,buddy.email,email,first_name)
+	c = RequestContext(request, {'purpose':'successful_contact'})
 	buddy.delete()
 	return HttpResponse(t.render(c))
