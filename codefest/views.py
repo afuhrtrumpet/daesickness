@@ -7,7 +7,7 @@ import parsers.medline as ML
 
 def home(request):
     t = loader.get_template('home.html')
-    c = RequestContext(request, {'sites': sites})
+    c = RequestContext(request, {})
     return HttpResponse(t.render(c))
 
 def search(request):
