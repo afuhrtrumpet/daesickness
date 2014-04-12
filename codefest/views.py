@@ -16,5 +16,9 @@ def search(request):
     healthfinder = HF.parse(term)
     kaiserhealthnews = KHN.parse(term)
     sources = [reddit,healthfinder, kaiserhealthnews]
-    c = RequestContext(request, {'sources': sources})
+    no_results = 0 == sum([len(source['results']) for source in sources])
+    c = RequestContext(request, {'sources': sources,
+                                 'no_results':no_results,
+                                 }
+                       )
     return HttpResponse(t.render(c))
